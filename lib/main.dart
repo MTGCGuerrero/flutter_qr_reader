@@ -17,6 +17,8 @@ class MyApp extends StatelessWidget {
         'home' : ((context) => HomePage()),
         'mapa' : ((context) => MapaPage())
       },
+      theme: ThemeData(primaryColor: Colors.deepPurple,
+      floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: Colors.deepPurple)),
     );
   }
 }
