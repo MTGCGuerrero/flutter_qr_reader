@@ -16,7 +16,7 @@ class CustomNavigationBar extends StatelessWidget {
       onTap: (int i) => uiProvider.selectedMenuOpt = i,
       currentIndex: currentIndex,
       elevation: 0,
-      items: [
+      items: const [
         BottomNavigationBarItem(icon: Icon(Icons.map), label: 'Mapa'),
         BottomNavigationBarItem(
             icon: Icon(Icons.compass_calibration), label: 'Direcciones'),
