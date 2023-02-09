@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:qr_reader/models/scan_mode.dart';
 import 'package:qr_reader/providers/db_provider.dart';
 
-class ScanListNotifier extends ChangeNotifier {
+class ScanListProvider extends ChangeNotifier {
   List<ScanModel> scans = [];
   String tipoSeleccionado = 'http';
 

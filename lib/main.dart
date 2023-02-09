@@ -15,18 +15,20 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => UiProvider()),
-        ChangeNotifierProvider(create: (_) => ScanListNotifier()),
+        ChangeNotifierProvider(create: (_) => ScanListProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'QR Reader',
         initialRoute: 'home',
         routes: {
-          'home' : ((context) => HomePage()),
-          'mapa' : ((context) => MapaPage())
+          'home': ((context) => HomePage()),
+          'mapa': ((context) => MapaPage())
         },
-        theme: ThemeData(primaryColor: Colors.deepPurple,
-        floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: Colors.deepPurple)),
+        theme: ThemeData(
+            primaryColor: Colors.deepPurple,
+            floatingActionButtonTheme: FloatingActionButtonThemeData(
+                backgroundColor: Colors.deepPurple)),
       ),
     );
   }
