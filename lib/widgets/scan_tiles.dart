@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_reader/providers/scan_list_provider.dart';
+import 'package:qr_reader/utils/utils.dart';
 
 class ScanTiles extends StatelessWidget {
   final String tipo;
@@ -23,19 +24,17 @@ class ScanTiles extends StatelessWidget {
               .borrarScanPorID(scanListProvider.scans[i].id);
         },
         child: ListTile(
-          leading: Icon(
-            tipo == 'http' ? Icons.map_outlined
-            : Icons.home_max_outlined,
-            color: Theme.of(context).primaryColor,
-          ),
-          title: Text(scanListProvider.scans[i].valor),
-          subtitle: Text(scanListProvider.scans[i].id.toString()),
-          trailing: Icon(
-            Icons.keyboard_arrow_right,
-            color: Colors.amber,
-          ),
-          onTap: () => print(scanListProvider.scans[i].id),
-        ),
+            leading: Icon(
+              tipo == 'http' ? Icons.map_outlined : Icons.home_max_outlined,
+              color: Theme.of(context).primaryColor,
+            ),
+            title: Text(scanListProvider.scans[i].valor),
+            subtitle: Text(scanListProvider.scans[i].id.toString()),
+            trailing: Icon(
+              Icons.keyboard_arrow_right,
+              color: Colors.amber,
+            ),
+            onTap: () => launchUrl(context, scanListProvider.scans[i])),
       ),
     );
   }
