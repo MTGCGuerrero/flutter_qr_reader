@@ -7,16 +7,33 @@ class MapasPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final scanListProvider = Provider.of<ScanListProvider>(context, listen: false);
+    final scanListProvider =
+        Provider.of<ScanListProvider>(context, listen: false);
     return ListView.builder(
-      
       itemCount: scanListProvider.scans.length,
-      itemBuilder: (_, i) => ListTile(
-        leading: Icon(Icons.map,color: Theme.of(context).primaryColor,),
-        title: Text(scanListProvider.scans[i].valor),
-        subtitle: Text(scanListProvider.scans[i].id.toString()),
-        trailing: Icon(Icons.keyboard_arrow_right, color: Colors.amber,),
-        onTap: () => print(scanListProvider.scans[i].id),
-      ), );
+      itemBuilder: (_, i) => Dismissible(
+        key: UniqueKey(),
+        background: Container(
+          color: Colors.red,
+        ),
+        onDismissed: (direction) {
+          Provider.of<ScanListProvider>(context, listen: false)
+              .borrarScanPorID(scanListProvider.scans[i].id);
+        },
+        child: ListTile(
+          leading: Icon(
+            Icons.map,
+            color: Theme.of(context).primaryColor,
+          ),
+          title: Text(scanListProvider.scans[i].valor),
+          subtitle: Text(scanListProvider.scans[i].id.toString()),
+          trailing: Icon(
+            Icons.keyboard_arrow_right,
+            color: Colors.amber,
+          ),
+          onTap: () => print(scanListProvider.scans[i].id),
+        ),
+      ),
+    );
   }
 }
